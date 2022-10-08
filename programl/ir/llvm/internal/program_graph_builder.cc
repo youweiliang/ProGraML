@@ -565,13 +565,9 @@ void ProgramGraphBuilder::Clear() {
 }
 
 Node* ProgramGraphBuilder::GetOrCreateType(const ::llvm::Type* type) {
-  auto it = types_.find(type);
-  if (it == types_.end()) {
-    Node* node = AddLlvmType(type);
-    types_[type] = node;
-    return node;
-  }
-  return it->second;
+  Node* node = AddLlvmType(type);
+  types_[type] = node;
+  return node;
 }
 
 }  // namespace internal
